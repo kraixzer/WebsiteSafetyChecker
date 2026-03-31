@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Website Safety Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>🔐 Website Safety Checker</h2>
+
+    <p id="url"></p>
+
+    <div class="status-box">
+        <h3 id="status">Checking...</h3>
+        <p id="risk"></p>
+        <p id="hostInfo"></p>
+    </div>
+
+    <div class="threat-box">
+        <h4>Detected Threats</h4>
+        <p id="redirects">Redirect Links: 0</p>
+        <p id="buttons">Fake Buttons: 0</p>
+        <p id="popups">Popups: 0</p>
+        <p id="videos">Fake Videos: 0</p>
+        <p id="ads">Ads: 0</p>
+    </div>
+
+    <div class="buttons">
+        <button id="recheck">🔄 Recheck</button>
+        <button id="details">📊 Details</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

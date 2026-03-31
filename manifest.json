@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Website Safety Checker",
+  "version": "3.0",
+  "description": "Detects scam, phishing, redirects, popups, and suspicious website behavior in real-time.",
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Website Safety Checker"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

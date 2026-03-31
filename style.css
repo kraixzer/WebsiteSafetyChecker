@@ -1,0 +1,80 @@
+body {
+    width: 320px;
+    padding: 15px;
+    background: #0b0f1a;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+/* Title */
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* URL */
+#url {
+    font-size: 12px;
+    color: #9ca3af;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+}
+
+/* Status Box */
+.status-box {
+    background: #111827;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+#status {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#risk, #hostInfo {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* Threat Box */
+.threat-box {
+    background: #111827;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.threat-box h4 {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.threat-box p {
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
