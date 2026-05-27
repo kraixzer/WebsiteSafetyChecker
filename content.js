@@ -12,7 +12,7 @@ function updateStorage() {
     });
 }
 
-// 🚨 Warning Banner
+// Warning Banner
 function showWarning(message) {
     let banner = document.createElement("div");
 
@@ -47,7 +47,7 @@ function detectRedirects() {
     });
 }
 
-// 🖱️ Fake buttons
+// Fake buttons
 function detectFakeButtons() {
     document.querySelectorAll("button, div").forEach(el => {
         let text = el.innerText.toLowerCase();
@@ -63,7 +63,7 @@ function detectFakeButtons() {
     });
 }
 
-// 🚨 Popups
+// Popups
 function detectPopups() {
     document.querySelectorAll("div, iframe").forEach(el => {
         let style = window.getComputedStyle(el);
