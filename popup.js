@@ -50,12 +50,12 @@ function loadData() {
     );
 }
 
-// 🔄 Recheck
+// Recheck
 document.getElementById("recheck").addEventListener("click", () => {
     chrome.tabs.reload();
 });
 
-// 📊 Details
+// Details
 document.getElementById("details").addEventListener("click", () => {
     alert(
         "This tool analyzes:\n\n" +
