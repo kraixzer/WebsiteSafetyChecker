@@ -1,8 +1,8 @@
-// 🔑 ADD YOUR GOOGLE SAFE BROWSING API KEY HERE
-const GOOGLE_API_KEY = "YOUR_GOOGLE_API_AIzaSyCgyqDSRyB8VzRbqYkrkLl168-VArgcQ8wY";
+//  ADD YOUR GOOGLE SAFE BROWSING API KEY HERE
+const GOOGLE_API_KEY = "YOUR_GOOGLE_API_AI";
 
 // ===============================
-// 🔍 GOOGLE SAFE BROWSING CHECK
+//  GOOGLE SAFE BROWSING CHECK
 // ===============================
 async function checkGoogleSafeBrowsing(url) {
     const endpoint = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${GOOGLE_API_KEY}`;
@@ -41,7 +41,7 @@ async function checkGoogleSafeBrowsing(url) {
 }
 
 // ===============================
-// 🌐 HOSTING / IP INFO (WHOIS ALT)
+//  HOSTING / IP INFO (WHOIS ALT)
 // ===============================
 async function getDomainInfo(url) {
     try {
@@ -65,7 +65,7 @@ async function getDomainInfo(url) {
 }
 
 // ===============================
-// 🧠 HEURISTIC ANALYSIS
+//  HEURISTIC ANALYSIS
 // ===============================
 function heuristicScore(url) {
     let risk = 0;
@@ -76,19 +76,19 @@ function heuristicScore(url) {
 
         const suspiciousTLDs = ['.xyz', '.top', '.fun', '.click', '.shop', '.online'];
 
-        // 🚩 Suspicious TLD
+        //  Suspicious TLD
         if (suspiciousTLDs.some(tld => domain.endsWith(tld))) {
             risk += 2;
         }
 
-        // 🚩 Long or weird domain
+        //  Long or weird domain
         if (domain.length > 15) risk += 1;
         if (domain.includes('-')) risk += 1;
 
-        // 🚩 Numbers in domain
+        //  Numbers in domain
         if (/\d/.test(domain)) risk += 1;
 
-        // 🚩 Suspicious keywords
+        //  Suspicious keywords
         if (
             url.toLowerCase().includes("free") ||
             url.toLowerCase().includes("win") ||
@@ -98,7 +98,7 @@ function heuristicScore(url) {
             risk += 2;
         }
 
-        // 🚩 HTTP (not secure)
+        //  HTTP (not secure)
         if (parsed.protocol === "http:") {
             risk += 2;
         }
@@ -111,21 +111,21 @@ function heuristicScore(url) {
 }
 
 // ===============================
-// 🧠 FINAL ANALYSIS ENGINE
+// FINAL ANALYSIS ENGINE
 // ===============================
 async function analyzeURL(url) {
     let risk = 0;
 
-    // 1️⃣ Google Safe Browsing
+    // 1️ Google Safe Browsing
     const isMalicious = await checkGoogleSafeBrowsing(url);
     if (isMalicious) {
         risk += 5;
     }
 
-    // 2️⃣ Hosting Info
+    // 2️ Hosting Info
     const info = await getDomainInfo(url);
 
-    // 🚩 Suspicious hosting signals
+    //  Suspicious hosting signals
     if (info.country === "Unknown") risk += 1;
 
     if (info.org.toLowerCase().includes("hosting") ||
@@ -133,11 +133,11 @@ async function analyzeURL(url) {
         risk += 1;
     }
 
-    // 3️⃣ Heuristic Score
+    // 3️ Heuristic Score
     risk += heuristicScore(url);
 
     // ===============================
-    // 🎯 FINAL CLASSIFICATION
+    //  FINAL CLASSIFICATION
     // ===============================
     let status = "LIKELY SAFE ✅";
     let color = "green";
@@ -160,7 +160,7 @@ async function analyzeURL(url) {
 }
 
 // ===============================
-// 🔄 TAB UPDATE LISTENER
+//  TAB UPDATE LISTENER
 // ===============================
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (changeInfo.status === "complete" && tab.url) {
